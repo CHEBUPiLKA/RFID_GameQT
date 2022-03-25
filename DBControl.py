@@ -8,7 +8,7 @@ class DB:
     def register(self, UID):
         try:
             self._cur = self._db.cursor()
-            self._cur.execute(f"INSERT INTO Players (UID) VALUES ({UID})")
+            self._cur.execute("INSERT INTO Players (UID) VALUES ({})".format(UID))
             self._cur.close()
             return 1
         except Exception as e:
