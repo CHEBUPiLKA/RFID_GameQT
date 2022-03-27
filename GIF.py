@@ -30,13 +30,13 @@ class Ui_MainWindow(object):
         self.label.setObjectName("label")
 
         self.label_2 = QtWidgets.QLabel(self.centralwidget)
-        self.label_2.setGeometry(QtCore.QRect(150, 500, 1920, 1080))
+        self.label_2.setGeometry(QtCore.QRect(130, 500, 1920, 1080))
         self.label_2.setCursor(QtGui.QCursor(QtCore.Qt.BlankCursor))
         self.label_2.cursor()
         self.label_2.setObjectName("label_2")
         self.set_color()
-        self.label_2.setText('<h4 style="color: rgb(250, 55, 55);">YOU ARE NOT REGISTERED, PLEASE CONTACT... ME</h4>')
-        self.label_2.setFont(QtGui.QFont("Times", 45, QtGui.QFont.Bold))
+        self.label_2.setText('<h4 style="color: rgb(255, 255, 255);">YOU ARE NOT REGISTERED, PLEASE CONTACT MAKSIM IVANOV</h4>')
+        self.label_2.setFont(QtGui.QFont("Times", 40, QtGui.QFont.Bold))
         self.label_2.adjustSize()
         self.label_2.hide()
 

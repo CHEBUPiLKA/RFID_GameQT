@@ -31,7 +31,7 @@ def RFIDScan():
                 else:
                     print("Hello! You authed!")
                     sleep(2)
-
-t = Process(target=RFIDScan)
-t.start()
-guiStartup()
+if __name__ == "__main__":
+    t = Process(target=RFIDScan)
+    t.start()
+    guiStartup()

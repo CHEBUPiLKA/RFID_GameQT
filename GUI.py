@@ -15,8 +15,8 @@ class Window(QMainWindow, Ui_MainWindow):
         self.animation.setStartValue(QtCore.QRect(0, 0, 1920, 1080))
         self.animation.setEndValue(QtCore.QRect(960, 540, 0, 0))
 
-    def set_color(self):
-        self._color = QColor(0, 0, 0)
+    def set_color(self, col=(0, 0, 0)):
+        self._color = QColor(col[0], col[1], col[2])
         self.setStyleSheet('background-color: rgb({}, {}, {})'.format(self._color.red(), self._color.green(), self._color.blue()))
     def keyPressEvent(self, e):
         if e.key() == Qt.Key_Escape:
