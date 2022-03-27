@@ -13,3 +13,5 @@ class DB:
             return 1
         except Exception as e:
             return str(e)
+    def getQuestData(self, QuestId):
+        return "Data for quest id: {}".format(QuestId)
