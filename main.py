@@ -1,13 +1,24 @@
 from DBControl import DB
 import sys
 from pirc522 import RFID
+from random import choice
 from time import sleep
+from os import system
 rdr = RFID()
 db = DB()
 
 master_UID = 0
 
 Users = db.init_uids
+
+def getRandomQuest():
+    f = open("Quests.txt", 'r')
+    quests = f.readlines()
+
+    #(Objective, Description, status)
+    #------------------------ 0 - Active, 1 - Taken, 2 - Done
+    quests = [(i.split('@')[0], i.split('@')[1], i.split('@')[2]) for i in quests]
+    return choice(quests)
 
 def RFIDScan():
     while True:
@@ -39,6 +50,10 @@ def RFIDScan():
                                 print("ERROR REGISTRATING")
                 else:
                     print("Hello! You authed!")
-                    sleep(2)
+                    sleep(1)
+                    system("clear")
+                    q = getRandomQuest()
+                    print(f"YOUR QUEST FOR TODAY IS: \t {q[0]}\n\n\nDESCRIPTION: \t {q[1]}")
+                    sleep(5)
 if __name__ == "__main__":
     RFIDScan()
