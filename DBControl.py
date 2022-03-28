@@ -10,8 +10,7 @@ class DB:
             self._cur = self._db.cursor()
             self._cur.execute("INSERT INTO Players (UID) VALUES ({})".format(UID))
             self._cur.close()
+            self._db.commit()
             return 1
         except Exception as e:
             return str(e)
-    def getQuestData(self, QuestId):
-        return "Data for quest id: {}".format(QuestId)
