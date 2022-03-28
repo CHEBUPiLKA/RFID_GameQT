@@ -1,7 +1,7 @@
 from DBControl import DB
 import sys
 from pirc522 import RFID
-from multiprocessing import Process
+import threading
 from GUI import guiStartup
 from time import sleep
 rdr = RFID()
@@ -10,6 +10,7 @@ db = DB()
 Users = db.init_uids
 
 def RFIDScan():
+    print("START SCANNING")
     while True:
         rdr.wait_for_tag()
         (error, tag_type) = rdr.request()
@@ -32,6 +33,6 @@ def RFIDScan():
                     print("Hello! You authed!")
                     sleep(2)
 if __name__ == "__main__":
-    t = Process(target=RFIDScan)
+    t = threading.Thread(target=RFIDScan)
     t.start()
     guiStartup()
