@@ -1,7 +1,7 @@
 from DBControl import DB
 import sys
 from pirc522 import RFID
-from random import choice
+1863213129237from random import choice
 from time import sleep
 from os import system
 rdr = RFID()
@@ -25,39 +25,37 @@ def RFIDScan():
         rdr.wait_for_tag()
         (error, tag_type) = rdr.request()
         if not error:
+            print("Tag detected")
             (error, uid) = rdr.anticoll()
             if not error:
+                print("UID: " + str(uid))
                 uid = int("".join(list(map(str, uid))))
-                if uid == master_UID:
+                print(uid)
+                if uid not in Users:
+                    print("You are not registered, please contact Maksim Ivanov")
+                    sleep(2)
+                elif uid == master_UID:
                     print("REGISTRATION PROCESS INIT")
-                    sleep(2)
-                    print("Please be ready to scan player card in 2 seconds")
-                    sleep(2)
+                    print("Please scan player card")
                     rdr.wait_for_tag()
                     (error, tag_type) = rdr.request()
                     if not error:
                         print("REGISTRATING...")
                         (error, uid_new) = rdr.anticoll()
                         if not error:
-                            uid_new = int("".join(list(map(str, uid_new))))
                             print("UID: " + str(uid_new))
+                            uid_new = int("".join(list(map(str, uid_new))))
                             if db.register(uid_new) == 1:
                                 Users.append(uid_new)
                                 print("DONE")
-                                sleep(2)
                             else:
                                 print("ERROR REGISTRATING")
-                                sleep(2)
-                elif uid not in Users:
-                    print("You are not registered, please contact Maksim Ivanov")
-                    sleep(2)
                 else:
-                    print("Hello! You authed! Wait for the Quest!")
+                    print("Hello! You authed!")
                     sleep(1)
                     system("clear")
                     q = getRandomQuest()
                     print(f"YOUR QUEST FOR TODAY IS: \t {q[0]}\n\n\nDESCRIPTION: \t {q[1]}")
-                    sleep(7)
-                    system("clear")
+                    sleep(5)
 if __name__ == "__main__":
     RFIDScan()
