@@ -1,4 +1,6 @@
 import sqlite3 as sq
+
+
 class UTILITIES:
     def __init__(self):
         self._db = sq.connect("players.sqlite", check_same_thread=False)
@@ -7,10 +9,13 @@ class UTILITIES:
         self._questIDS = [i[0] for i in self._cur.execute("SELECT Id FROM Quests").fetchall()]
         self._cur.close()
         self._db.close()
+
     def initPlayers(self):
         return self._playerUIDS
+
     def initQuests(self):
         return self._questIDS
+
     def registerPlayer(self, UID):
         try:
             self._cur = self._db.cursor()

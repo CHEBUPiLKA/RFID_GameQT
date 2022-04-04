@@ -13,11 +13,19 @@ import sys
 
 
 class Ui_MainWindow(object):
+    def __init__(self):
+        self.app = None
+        self.screen = None
+        self.size = None
+        self.movie = None
+        self.label = None
+        self.label_2 = None
+        self.centralwidget = None
+
     def setupUi(self, MainWindow):
         MainWindow.setObjectName("MainWindow")
         self.centralwidget = QtWidgets.QWidget(MainWindow)
         self.centralwidget.setObjectName("centralwidget")
-
 
         self.label = QtWidgets.QLabel(self.centralwidget)
         self.label.setGeometry(QtCore.QRect(0, 0, 1920, 1080))
@@ -31,7 +39,8 @@ class Ui_MainWindow(object):
         self.label_2.cursor()
         self.label_2.setObjectName("label_2")
         self.set_color()
-        self.label_2.setText('<h4 style="color: rgb(255, 255, 255);">YOU ARE NOT REGISTERED, PLEASE CONTACT MAKSIM IVANOV</h4>')
+        self.label_2.setText(
+            '<h4 style="color: rgb(255, 255, 255);">YOU ARE NOT REGISTERED, PLEASE CONTACT MAKSIM IVANOV</h4>')
         self.label_2.setFont(QtGui.QFont("Times", 40, QtGui.QFont.Bold))
 
         MainWindow.setCentralWidget(self.centralwidget)

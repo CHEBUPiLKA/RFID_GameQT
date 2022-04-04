@@ -8,6 +8,7 @@ from Game_Classes.PLAYER import PLAYER
 from Game_Classes.QUEST import QUEST
 from time import sleep
 from random import choice
+
 rdr = RFID()
 ut = UTILITIES()
 
@@ -17,6 +18,7 @@ QuestsIDS = ut.initQuests()
 PlayersIDS = ut.initPlayers()
 Quests = []
 Players = []
+
 
 def RFIDScan():
     while True:
@@ -53,6 +55,8 @@ def RFIDScan():
                     quest = QUEST(choice(QuestsIDS))
                     quest.assignQuest(player)
                     guiQuest(quest)
+
+
 if __name__ == "__main__":
     t = threading.Thread(target=RFIDScan)
     t.start()
