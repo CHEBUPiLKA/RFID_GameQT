@@ -17,8 +17,8 @@ class Window(QMainWindow, Ui_MainWindow):
         self.animation.setTargetObject(self.label)
         self.animation.setPropertyName(b'geometry')
         self.animation.setDuration(1000)
-        self.animation.setStartValue(QtCore.QRect(0, 0, self.size().width(), self.size().height()))
-        self.animation.setEndValue(QtCore.QRect(self.size().width() // 2, self.size().height() // 2, 0, 0))
+        self.animation.setStartValue(QtCore.QRect(0, 0, self.size.width(), self.size.height()))
+        self.animation.setEndValue(QtCore.QRect(self.size.width() // 2, self.size.height() // 2, 0, 0))
 
         self.anim_2 = QPropertyAnimation(self)
         self.anim_2.setTargetObject(self.label_2)

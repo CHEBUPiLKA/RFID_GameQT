@@ -1,10 +1,9 @@
 import sqlite3 as sq
 
-
 class QUEST:
     def __init__(self, ID):
         self._player = None
-        self._db = sq.connect("players.sqlite", check_same_thread=False)
+        self._db = sq.connect("../players.sqlite", check_same_thread=False)
         self._cur = self._db.cursor()
         self._data = [i[0] for i in self._cur.execute(f"SELECT * FROM Quests WHERE Id={ID}").fetchall()]
         self._id = self._data[0]
@@ -34,6 +33,12 @@ class QUEST:
 
     def getStatus(self):
         return self._status
+
+    def getId(self):
+        return self._id
+
+    def getExp(self):
+        return self.getExp()
 
     def assignQuest(self, player):
         self._player = player
