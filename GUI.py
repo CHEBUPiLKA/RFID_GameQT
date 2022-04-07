@@ -6,9 +6,12 @@ import sys
 import threading
 from GIF import Ui_MainWindow
 from time import sleep
+
+
 class Window(QMainWindow, Ui_MainWindow):
     def __init__(self, parent=None):
         super().__init__(parent)
+        self._color = None
         self.setupUi(self)
         self.animation = QPropertyAnimation(self)
         self.animation.setTargetObject(self.label)
@@ -29,7 +32,9 @@ class Window(QMainWindow, Ui_MainWindow):
 
     def set_color(self, col=(0, 0, 0)):
         self._color = QColor(col[0], col[1], col[2])
-        self.setStyleSheet('background-color: rgb({}, {}, {})'.format(self._color.red(), self._color.green(), self._color.blue()))
+        self.setStyleSheet(
+            'background-color: rgb({}, {}, {})'.format(self._color.red(), self._color.green(), self._color.blue()))
+
     def keyPressEvent(self, e):
         if e.key() == Qt.Key_Escape:
             self.close()
@@ -48,25 +53,35 @@ class Window(QMainWindow, Ui_MainWindow):
         elif e.key() == Qt.Key_7:
             self.animation.start()
         elif e.key() == Qt.Key_8:
-            self.label.setGeometry(QtCore.QRect(0, 0, self.size.width(), self.size.height()))
+            self.label.setGeometry(QtCore.QRect(0, 0, self.size().width(), self.size().height()))
         elif e.key() == Qt.Key_9:
             self.regRequest()
         elif e.key() == Qt.Key_0:
             cardAuth()
+
     def restoreDefault(self):
         self.label_2.setGeometry(QtCore.QRect(0, 0, 0, 0))
-        self.label.setGeometry(QtCore.QRect(0, 0, self.size.width(), self.size.height()))
+        self.label.setGeometry(QtCore.QRect(0, 0, self.size().width(), self.size().height()))
+
     def regRequest(self):
         self.anim_group.start()
+
     def showQuest(self):
         pass
+
+
 app = QApplication(sys.argv)
 win = Window()
+
 def guiStartup():
     win.showFullScreen()
     sys.exit(app.exec())
+
+
 def cardAuth():
     win.regRequest()
     print("back here")
+
+
 def guiQuest(quest):
     pass
