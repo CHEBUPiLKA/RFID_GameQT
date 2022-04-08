@@ -34,6 +34,7 @@ class UTILITIES:
                               .format(quest_id, objective, description, int(status), exp))
             self._cur.close()
             self._db.commit()
+            self._questIDS.append(quest_id)
             return 1
         except Exception as e:
             return str(e)

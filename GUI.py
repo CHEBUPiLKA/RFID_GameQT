@@ -11,7 +11,6 @@ from time import sleep
 class Window(QMainWindow, Ui_MainWindow):
     def __init__(self, parent=None):
         super().__init__(parent)
-        self._color = None
         self.setupUi(self)
         self.animation = QPropertyAnimation(self)
         self.animation.setTargetObject(self.label)
@@ -53,7 +52,7 @@ class Window(QMainWindow, Ui_MainWindow):
         elif e.key() == Qt.Key_7:
             self.animation.start()
         elif e.key() == Qt.Key_8:
-            self.label.setGeometry(QtCore.QRect(0, 0, self.size().width(), self.size().height()))
+            self.label.setGeometry(QtCore.QRect(0, 0, self.size.width(), self.size.height()))
         elif e.key() == Qt.Key_9:
             self.regRequest()
         elif e.key() == Qt.Key_0:
@@ -61,7 +60,7 @@ class Window(QMainWindow, Ui_MainWindow):
 
     def restoreDefault(self):
         self.label_2.setGeometry(QtCore.QRect(0, 0, 0, 0))
-        self.label.setGeometry(QtCore.QRect(0, 0, self.size().width(), self.size().height()))
+        self.label.setGeometry(QtCore.QRect(0, 0, self.size.width(), self.size.height()))
 
     def regRequest(self):
         self.anim_group.start()

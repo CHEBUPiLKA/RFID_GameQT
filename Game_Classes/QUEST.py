@@ -38,7 +38,7 @@ class QUEST:
         return self._id
 
     def getExp(self):
-        return self.getExp()
+        return self._EXP
 
     def assignQuest(self, player):
         self._player = player

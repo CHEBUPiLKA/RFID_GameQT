@@ -13,15 +13,6 @@ import sys
 
 
 class Ui_MainWindow(object):
-    def __init__(self):
-        self.app = None
-        self.screen = None
-        self.size = None
-        self.movie = None
-        self.label = None
-        self.label_2 = None
-        self.centralwidget = None
-
     def setupUi(self, MainWindow):
         MainWindow.setObjectName("MainWindow")
         self.centralwidget = QtWidgets.QWidget(MainWindow)
